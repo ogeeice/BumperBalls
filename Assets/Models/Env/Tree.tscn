@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Models/Env/Text/Trees.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Models/Env/palmtree.obj" type="ArrayMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 1
+params_grow = true
+params_grow_amount = 0.005
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+next_pass = SubResource( 1 )
+params_diffuse_mode = 4
+params_specular_mode = 3
+params_cull_mode = 2
+albedo_texture = ExtResource( 1 )
+roughness = 0.0
+
+[node name="Tree" type="Spatial"]
+
+[node name="palmtree" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = SubResource( 2 )

@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://World/Menu/MainMenu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/PNGs/MenuUi/TextBox.png" type="Texture" id=2]
+[ext_resource path="res://Assets/PNGs/MenuUi/MenuImages/Menu.png" type="Texture" id=3]
+[ext_resource path="res://Assets/PNGs/MenuUi/ButtonFocus.png" type="Texture" id=4]
+[ext_resource path="res://Font/AlloyInk-lgdWw.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://Assets/PNGs/MenuUi/ButtonNorm.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 90
+outline_size = 2
+outline_color = Color( 0.960784, 0.721569, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 8 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+MultiplayerScene = "res://World/Lobby/Lobby.tscn"
+AvatarMenu = "res://World/Menu/Customization/Avatar.tscn"
+
+[node name="Main" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Control" type="Control" parent="Main"]
+anchor_left = 0.660156
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Multiplayer" type="TouchScreenButton" parent="Main/Control" groups=["Buttons"]]
+position = Vector2( -292, 360 )
+scale = Vector2( 1.28, 1.22667 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="M" type="Label" parent="Main/Control/Multiplayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.960784, 0.721569, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "PLAY"
+align = 1
+valign = 1
+
+[node name="Avatar" type="TouchScreenButton" parent="Main/Control" groups=["Buttons"]]
+position = Vector2( -476, 384 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="A" type="Label" parent="Main/Control/Avatar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.960784, 0.721569, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "AVATAR"
+align = 1
+valign = 1
+
+[node name="Exit" type="TouchScreenButton" parent="Main/Control" groups=["Buttons"]]
+position = Vector2( -35.9998, 384 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="E" type="Label" parent="Main/Control/Exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.960784, 0.721569, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "EXIT"
+align = 1
+valign = 1
+
+[node name="Name" type="Label" parent="Main"]
+anchor_left = 0.178223
+anchor_top = 0.205
+anchor_right = 0.821777
+anchor_bottom = 0.371666
+custom_fonts/font = SubResource( 2 )
+text = "BUMPER BALLS"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NameBox" type="TextureRect" parent="."]
+anchor_left = 0.0419922
+anchor_top = 0.0683333
+anchor_right = 0.268555
+anchor_bottom = 0.151667
+margin_bottom = 7.62939e-06
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Name" type="Label" parent="NameBox"]
+anchor_left = 0.0215517
+anchor_right = 0.974137
+anchor_bottom = 0.999995
+custom_colors/font_color = Color( 0.960784, 0.721569, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+align = 2
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="pressed" from="Main/Control/Multiplayer" to="." method="_on_Multiplayer_pressed"]
+[connection signal="pressed" from="Main/Control/Avatar" to="." method="_on_Avatar_pressed"]
+[connection signal="pressed" from="Main/Control/Exit" to="." method="_on_Exit_pressed"]

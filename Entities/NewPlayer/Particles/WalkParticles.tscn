@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_diffuse_mode = 4
+params_specular_mode = 3
+params_cull_mode = 1
+params_grow = true
+params_grow_amount = 0.1
+albedo_color = Color( 0, 0, 0, 1 )
+roughness = 0.0
+
+[sub_resource type="SpatialMaterial" id=5]
+next_pass = SubResource( 4 )
+vertex_color_use_as_albedo = true
+params_diffuse_mode = 4
+params_specular_mode = 3
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id=6]
+material = SubResource( 5 )
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.00227273 ), 0.0, 0.0, 0, 0, Vector2( 0.233696, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="WalkParticles" type="CPUParticles"]
+amount = 20
+lifetime = 0.7
+speed_scale = 2.0
+lifetime_randomness = 1.0
+local_coords = false
+draw_order = 1
+mesh = SubResource( 6 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.5, 0.5, 0.5 )
+gravity = Vector3( 0, 9.8, 0 )
+scale_amount = 0.5
+scale_amount_curve = SubResource( 1 )

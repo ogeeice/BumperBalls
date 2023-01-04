@@ -1,0 +1,197 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://World/Menu/Customization/Avatar.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Models/Ball/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Models/Characters/Character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/PNGs/MenuUi/ButtonNorm.png" type="Texture" id=4]
+[ext_resource path="res://Assets/PNGs/MenuUi/ButtonFocus.png" type="Texture" id=5]
+[ext_resource path="res://Assets/PNGs/MenuUi/SliderTick.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Audio/tick_002.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Font/AlloyInk-lgdWw.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://Assets/PNGs/MenuUi/TextBox.png" type="Texture" id=9]
+[ext_resource path="res://Assets/PNGs/MenuUi/SliderFocus.png" type="Texture" id=11]
+[ext_resource path="res://Assets/PNGs/MenuUi/Slider/Bar.png" type="Texture" id=12]
+[ext_resource path="res://Assets/PNGs/MenuUi/SliderNormal.png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+outline_size = 2
+outline_color = Color( 0.960784, 0.721569, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 191, 49 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 190, 4 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 190, 4 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 8 )
+
+[node name="Avatar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+MainScene = "res://World/Menu/MainMenu/MainMenu.tscn"
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Ball" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 2.62499, 0.697073, 0 )
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310184, 1.71521, 3.26223 )
+projection = 1
+size = 5.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Spatial"]
+transform = Transform( 0.926712, 0, -0.375771, 0, 1, 0, 0.375771, 0, 0.926712, 0, 0, 0 )
+light_energy = 0.025
+
+[node name="P" type="Position3D" parent="Spatial"]
+transform = Transform( 0.999974, -0.00715579, 0, 0.00715579, 0.999974, 0, 0, 0, 1, 1.34156, 0.103383, 2.01066 )
+
+[node name="Character" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.12596, 0.00921166, 0 )
+Tutorial = true
+
+[node name="AvatarTag" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SkinTag" type="Label" parent="AvatarTag"]
+anchor_left = 0.0380859
+anchor_top = 0.45
+anchor_right = 0.148438
+anchor_bottom = 0.531667
+custom_fonts/font = SubResource( 3 )
+text = "SKIN"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BallTag" type="Label" parent="AvatarTag"]
+anchor_left = 0.0371094
+anchor_top = 0.665
+anchor_right = 0.164063
+anchor_bottom = 0.746667
+custom_fonts/font = SubResource( 3 )
+text = "BALL"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NameTag" type="Label" parent="AvatarTag"]
+anchor_left = 0.0371094
+anchor_top = 0.238333
+anchor_right = 0.283203
+anchor_bottom = 0.32
+margin_right = -6.10352e-05
+custom_fonts/font = SubResource( 3 )
+text = "USERNAME"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NameHolder" type="LineEdit" parent="AvatarTag"]
+anchor_left = 0.306641
+anchor_top = 0.225
+anchor_right = 0.585938
+anchor_bottom = 0.316667
+custom_colors/font_color = Color( 0.960784, 0.721569, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+align = 1
+placeholder_text = "USERNAME"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SkinSlider" type="HSlider" parent="."]
+anchor_left = 0.180664
+anchor_top = 0.44
+anchor_right = 0.526367
+anchor_bottom = 0.533333
+margin_bottom = -3.05176e-05
+custom_icons/tick = ExtResource( 6 )
+custom_icons/grabber_highlight = ExtResource( 11 )
+custom_icons/grabber = ExtResource( 13 )
+custom_styles/slider = SubResource( 9 )
+custom_styles/grabber_area_highlight = SubResource( 10 )
+custom_styles/grabber_area = SubResource( 11 )
+min_value = 1.0
+max_value = 4.0
+value = 1.0
+tick_count = 4
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BallSlider" type="HSlider" parent="."]
+anchor_left = 0.180664
+anchor_top = 0.655
+anchor_right = 0.526367
+anchor_bottom = 0.748333
+margin_top = 3.05176e-05
+custom_icons/tick = ExtResource( 6 )
+custom_icons/grabber_highlight = ExtResource( 11 )
+custom_icons/grabber = ExtResource( 13 )
+custom_styles/slider = SubResource( 6 )
+custom_styles/grabber_area_highlight = SubResource( 7 )
+custom_styles/grabber_area = SubResource( 8 )
+max_value = 3.0
+tick_count = 4
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Back" type="TouchScreenButton" parent="."]
+position = Vector2( 832, 456 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.960784, 0.721569, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "BACK"
+align = 1
+valign = 1
+
+[node name="Tick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="mouse_exited" from="SkinSlider" to="." method="_on_SkinSlider_mouse_exited"]
+[connection signal="value_changed" from="SkinSlider" to="." method="_on_SkinSlider_value_changed"]
+[connection signal="mouse_exited" from="BallSlider" to="." method="_on_BallSlider_mouse_exited"]
+[connection signal="value_changed" from="BallSlider" to="." method="_on_BallSlider_value_changed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
